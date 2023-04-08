@@ -23,7 +23,7 @@ let chatCommands;
 if (process.argv[2] !== undefined) {
   if (process.argv[2] === "test") {
     chatCommands = new _ChatCommands(null, gamerApi);
-    onMessageHandler("matriselan", {}, process.argv[3]);
+    onMessageHandler(process.env.TWITCH_CHANNEL, {}, process.argv[3]);
     return;
   }
   const queryParams = {};
