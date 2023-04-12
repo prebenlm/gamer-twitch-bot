@@ -99,16 +99,17 @@ async function getAppAccessToken() {
         const stream = response.data.data[0];
         if (stream) {
           //console.log(`Stream is live: ${stream.title}`);
+          chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
 
         } else {
           //console.log('Stream is offline');
         }
-        chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
+        //chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
       })
       .catch(error => {
         console.error('Error fetching channel status:', error);
       });
-  }, 30000);
+  }, 45000);
   
 
 // Called every time the bot connects to Twitch chat
