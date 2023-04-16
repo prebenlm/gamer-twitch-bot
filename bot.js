@@ -61,14 +61,14 @@ function onMessageHandler(channel, context, msg, self) {
   // Remove whitespace from chat message
   const commandName = msg.trim();
   if (context.mod) {
-    console.log(`${context.username} is a mod`);
+    // console.log(`${context.username} is a mod`);
   }
   //console.log(context);
 
   // If the command starts with !, handle it
 
   if (msg.startsWith("!")) {
-    const regexpCommand = new RegExp(/^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/);
+    const regexpCommand = /^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/;
     const [raw, command, argument] = msg.match(regexpCommand);
     chatCommands.handle(channel, command, argument, context);
   }
@@ -104,7 +104,7 @@ async function getAppAccessToken() {
         } else {
           //console.log('Stream is offline');
         }
-        //chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
+        chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
       })
       .catch(error => {
         console.error('Error fetching channel status:', error);
