@@ -95,7 +95,7 @@ async function getAppAccessToken() {
         });
       })
       .then(response => {
-        console.log(response.data.data[0])
+        //console.log(response.data.data[0])
         const stream = response.data.data[0];
         if (stream) {
           //console.log(`Stream is live: ${stream.title}`);
@@ -104,7 +104,7 @@ async function getAppAccessToken() {
         } else {
           //console.log('Stream is offline');
         }
-        chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
+        //chatCommands.findNewResults(process.env.TWITCH_CHANNEL);
       })
       .catch(error => {
         console.error('Error fetching channel status:', error);
