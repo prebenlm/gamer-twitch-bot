@@ -69,8 +69,11 @@ function onMessageHandler(channel, context, msg, self) {
 
   if (msg.startsWith("!")) {
     const regexpCommand = /^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/;
-    const [raw, command, argument] = msg.match(regexpCommand);
+    const matchResult = msg.match(regexpCommand);
+    const [raw, command, argument] = matchResult ? matchResult : [];
+    if (command) {
     chatCommands.handle(channel, command, argument, context);
+    }
   }
 }
 
